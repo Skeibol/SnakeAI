@@ -1,0 +1,18 @@
+{
+    "os": "Windows-10-10.0.17763-SP0",
+    "python": "3.10.7",
+    "heartbeatAt": "2022-09-11T21:50:19.703281",
+    "startedAt": "2022-09-11T21:50:18.851283",
+    "docker": null,
+    "gpu": "NVIDIA GeForce GTX 1080",
+    "gpu_count": 1,
+    "cpu_count": 12,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "d:\\Unity\\Projects\\SnakeData\\main.py",
+    "codePath": "main.py",
+    "host": "DESKTOP-CBVJJOH",
+    "username": "Toni",
+    "executable": "D:\\Unity\\Projects\\SnakeData\\venv\\Scripts\\python.exe"
+}
