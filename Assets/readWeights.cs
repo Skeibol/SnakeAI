@@ -17,7 +17,7 @@ public class readWeights : MonoBehaviour
         var txt = File.ReadAllText(filepath);
         foreach(string line in txt.Split("\n"))
         {
-            //(line);
+            print(line);
             row = new List<float>(); 
             foreach (string element in line.Split(","))
             {

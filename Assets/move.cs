@@ -39,6 +39,11 @@ public class move : MonoBehaviour
     private float[,] W2;
     private float[,] b1;
     private float[,] b2;
+    private float[,] W3;
+    private float[,] W4;
+    private float[,] b3;
+    private float[,] b4;
+
     private float[,] X_input;
     private List<float> decisions = new List<float>();
 
@@ -50,10 +55,15 @@ public class move : MonoBehaviour
         _segments.Add(this.transform);
         maxBodyLength = 10;
         this.prevPosition = new Vector3(0, 0, 0);
-        W1 = rw.getWeights("D:\\Unity\\Projects\\Snake\\SnakeData\\W1.txt");
-        W2 = rw.getWeights("D:\\Unity\\Projects\\Snake\\SnakeData\\W2.txt");
         b1 = rw.getWeights("D:\\Unity\\Projects\\Snake\\SnakeData\\b1.txt");
         b2 = rw.getWeights("D:\\Unity\\Projects\\Snake\\SnakeData\\b2.txt");
+        b3 = rw.getWeights("D:\\Unity\\Projects\\Snake\\SnakeData\\b3.txt");
+        b4 = rw.getWeights("D:\\Unity\\Projects\\Snake\\SnakeData\\b4.txt");
+        W1 = rw.getWeights("D:\\Unity\\Projects\\Snake\\SnakeData\\W1.txt");
+        W2 = rw.getWeights("D:\\Unity\\Projects\\Snake\\SnakeData\\W2.txt");
+        W3 = rw.getWeights("D:\\Unity\\Projects\\Snake\\SnakeData\\W3.txt");
+        W4 = rw.getWeights("D:\\Unity\\Projects\\Snake\\SnakeData\\W4.txt");
+        
     }
     void InitValues()
     {
@@ -77,16 +87,25 @@ public class move : MonoBehaviour
         
     }
     
-    private float[,] forward(float[,] X_input, float[,] W1, float[,] W2, float[,] b1, float[,] b2)
+    private float[,] forward(float[,] X_input, float[,] W1, float[,] W2, float[,] W3, float[,] W4, float[,] b1, float[,] b2, float[,] b3, float[,] b4) // SCALE WHEN CHANGING NETWORK
     {
         var Z1 = dot(W1, X_input);
         Z1 = add(Z1, b1);
         var A1 = ReLU(Z1);
+
         var Z2 = dot(W2, A1);
         Z2 = add(Z2, b2);
-        var A2 = Softmax(Z2);
- 
-        return A2;
+        var A2 = ReLU(Z2);
+
+        var Z3 = dot(W3, A2);
+        Z3 = add(Z3, b3);
+        var A3 = ReLU(Z3);
+
+        var Z4 = dot(W4, A3);
+        Z4 = add(Z4, b4);
+        var A4 = Softmax(Z4);
+
+        return A4; // SCALE WHEN CHANGING NETWORK
 
     }
         
@@ -170,10 +189,10 @@ public class move : MonoBehaviour
     private void FixedUpdate()
     {
         X_input = CollectData(_direction, prevDir);
-        var dec = forward(X_input, W1, W2, b1, b2);
+        var dec = forward(X_input,W1,W2,W3,W4,b1,b2,b3,b4);  // SCALE WHEN CHANGING NETWORK
         var dec_final = GetDecision(dec);
         //printMatrix(X_input);
-        printMatrix(forward(X_input, W1, W2, b1, b2));
+        printMatrix(forward(X_input, W1, W2, W3,W4,b1,b2,b3,b4)); // SCALE WHEN CHANGING NETWORK
         print(dec_final);
             
                 if (dec_final == 0)
