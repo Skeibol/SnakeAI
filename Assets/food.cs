@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class food : MonoBehaviour
+public class Food : MonoBehaviour
 {
     public BoxCollider2D gridArea;
 

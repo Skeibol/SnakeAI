@@ -5,7 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class mail : MonoBehaviour
+public class Mail : MonoBehaviour
 {
     private MailMessage mailmsg = new MailMessage();
 

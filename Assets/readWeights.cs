@@ -4,7 +4,7 @@ using UnityEngine;
 using System.IO;
 
 
-public class readWeights : MonoBehaviour 
+public class ReadWeights : MonoBehaviour 
 {
     public List<float> row;
     public List<List<float>> table = new List<List<float>>();
