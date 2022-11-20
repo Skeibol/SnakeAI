@@ -112,10 +112,10 @@ public class FadeWhenSnakeClose : MonoBehaviour {
 		float t = 0;
 		while (t < 1f)
 		{
-			t += Time.unscaledDeltaTime;
+			t += Time.unscaledTime;
 			graphic.alpha = Mathf.Lerp(graphic.alpha, fadeOut ? 0.1f : 1, t / 1f);
 			print(graphic.alpha);
-			yield return new WaitForEndOfFrame();
+			yield return null;
 		}
 	}
 }

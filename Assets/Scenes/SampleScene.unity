@@ -2285,7 +2285,7 @@ MonoBehaviour:
   food: {fileID: 2072186605}
   rw: {fileID: 1660829012}
   segmentPrefab: {fileID: 2912014982573171168, guid: 1762eef6564d6774fa866617a4c25039, type: 3}
-  collect: 0
+  collect: 1
 --- !u!61 &1799121764
 BoxCollider2D:
   m_ObjectHideFlags: 0
